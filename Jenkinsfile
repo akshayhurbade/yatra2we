@@ -32,7 +32,7 @@ pipeline {
         stage('Code QA Execution') {
             steps {
                 echo 'Junit Test case check in Progress!'
-                sh 'mvn clean package'
+                sh 'mvn test package'
             }
         }
         stage('Code Package') {
