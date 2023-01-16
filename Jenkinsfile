@@ -23,7 +23,7 @@ pipeline {
         stage('Code Compilation') {
             steps {
                 echo 'Code Compilation is In Progress!'
-                sh 'mvn clean compile'
+                sh 'mvn clean package'
             }
         }
 
