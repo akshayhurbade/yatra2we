@@ -3,7 +3,7 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
     }
-    agent ( label' stockholderA' )
+    agent ( label 'stockholderA' )
     tools {
         maven 'maven'
     }
