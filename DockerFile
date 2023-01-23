@@ -1,0 +1,11 @@
+# Pull tomcat latest image from dockerhub
+FROM tomcat:8.0.51-jre8-alpine
+MAINTAINER akshay@gmail.com
+# copy war file on to container
+# COPY only supports the basic copying of local files into the container
+COPY ./target/yatra2we*.jar /usr/local/tomcat/webapps
+EXPOSE  8080
+#naver ever a container should run as root user
+USER yatra2we
+WORKDIR /usr/local/tomcat/webapps
+CMD ["catalina.sh","run"]
