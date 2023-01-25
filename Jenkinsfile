@@ -44,8 +44,8 @@ pipeline {
         stage('Building  Docker Image') {
             steps {
                 echo 'Starting Building Docker Image'
-                sh 'docker build -t satyam88/yatra-ms .'
-                sh 'docker build -t yatra-ms .'
+                sh 'docker build -t akshay2patil/yatra2we .'
+                sh 'docker build -t yatra2we .'
                 echo 'Completed  Building Docker Image'
             }
         }
@@ -69,9 +69,9 @@ pipeline {
            steps {
               script {
                  withCredentials([string(credentialsId: 'dockerhubCred', variable: 'dockerhubCred')]){
-                 sh 'docker login docker.io -u satyam88 -p ${dockerhubCred}'
+                 sh 'docker login docker.io -u akshay2patil -p ${A271164@A}'
                  echo "Push Docker Image to DockerHub : In Progress"
-                 sh 'docker push satyam88/yatra-ms:latest'
+                 sh 'docker push akshay2patil/yatra2we:latest'
                  echo "Push Docker Image to DockerHub : In Progress"
                  sh 'whoami'
                  }
@@ -82,15 +82,15 @@ pipeline {
         stage(' Docker Image Push to Amazon ECR') {
            steps {
               script {
-                 withDockerRegistry([credentialsId:'ecr:ap-south-1:ecr-credentials', url:"https://559220132560.dkr.ecr.ap-south-1.amazonaws.com"]){
+                 withDockerRegistry([credentialsId:'ecr:ap-south-1:ecr-credentials', url:"599827061316.dkr.ecr.ap-south-1.amazonaws.com/yatra2we"]){
                  sh """
                  echo "List the docker images present in local"
                  docker images
                  echo "Tagging the Docker Image: In Progress"
-                 docker tag yatra-ms:latest 559220132560.dkr.ecr.ap-south-1.amazonaws.com/yatra-ms:latest
+                 docker tag yatra2we:latest 559220132560.dkr.ecr.ap-south-1.amazonaws.com/yatra2we:latest
                  echo "Tagging the Docker Image: Completed"
                  echo "Push Docker Image to ECR : In Progress"
-                 docker push 559220132560.dkr.ecr.ap-south-1.amazonaws.com/yatra-ms:latest
+                 docker push 559220132560.dkr.ecr.ap-south-1.amazonaws.com/yatra2we:latest
                  echo "Push Docker Image to ECR : Completed"
                  """
                  }
