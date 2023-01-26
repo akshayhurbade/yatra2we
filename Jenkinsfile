@@ -75,4 +75,4 @@ pipeline {
                       sh 'whoami'
                           }
          }
-    }
+}
