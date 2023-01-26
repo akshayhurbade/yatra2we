@@ -42,7 +42,7 @@ pipeline {
         stage('Building  Docker Image') {
             steps {
                 echo 'Starting Building Docker Image'
-                sh 'docker build -t akshay2patil /yatra2we .
+                sh 'docker build -t akshay2patil/yatra2we .'
                 sh 'docker build -t yatra2we .'
                 echo 'Completed  Building Docker Image'
             }
