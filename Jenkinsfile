@@ -47,8 +47,8 @@ pipeline {
         stage('Building  Docker Image') {
             steps {
                 echo 'Starting Building Docker Image'
-                sh 'docker build -t satyam88/yatra-ms .'
-                sh 'docker build -t yatra-ms .'
+                sh 'docker build -t akshay2patil/yatra2we .'
+                sh 'docker build -t yatra2we .'
                 echo 'Completed  Building Docker Image'
             }
         }
@@ -72,9 +72,9 @@ pipeline {
            steps {
               script {
                  withCredentials([string(credentialsId: 'dockerhubCred', variable: 'dockerhubCred')]){
-                 sh 'docker login docker.io -u satyam88 -p ${dockerhubCred}'
+                 sh 'docker login docker.io -u akshay2patil -p ${dockerhubCred}'
                  echo "Push Docker Image to DockerHub : In Progress"
-                 sh 'docker push satyam88/yatra-ms:latest'
+                 sh 'docker push akshay2patil/yatra2we:latest'
                  echo "Push Docker Image to DockerHub : In Progress"
                  sh 'whoami'
                  }
