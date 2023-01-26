@@ -67,65 +67,9 @@ pipeline {
          stage(' Docker push to Docker Hub') {
                 steps {
                    script {
-                      withCredentials([string(credentialsId: 'DockerC', variable: 'DockerC)])
-                      sh 'docker login docker.io -u satyam88 -p ${dockerhubCred}'
-                      echo "Push Docker Image to DockerHub : In Progress"
-                      sh 'docker push akshay2patil/yatra2we:latest'
-                      echo "Push Docker Image to DockerHub : In Progress"
-                      sh 'whoami'
-                   }
-                }
-         }
-
-    }
-
-
-
-          stage(' Docker Image Push to Amazon ECR') {
-                steps {
-                   script {
-                      withDockerRegistry([credentialsId:'ecr:ap-south-1:ecr-credentials', url:"599827061316.dkr.ecr.ap-south-1.amazonaws.com/yatra2we"]){
-                      sh """
-                      echo "List the docker images present in local"
-                      docker images
-                      echo "Tagging the Docker Image: In Progress"
-                     docker tag yatra2we:latest 599827061316.dkr.ecr.ap-south-1.amazonaws.com/yatra2we:latest
-                      echo "Tagging the Docker Image: Completed"
-                      echo "Push Docker Image to ECR : In Progress"
-                      docker push 559220132560.dkr.ecr.ap-south-1.amazonaws.com/yatra2we:latest
-                      echo "Push Docker Image to ECR : Completed"
-                      """
-                      }
-                   }
-                }
-             }
-
-             stage('Upload the docker Image to Nexus') {
-                steps {
-                   script {
-                      withCredentials([usernamePassword(credentialsId: 'nexuscred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                      sh 'docker login http://52.66.77.53:8085/repository/yatra-ms/ -u admin -p ${PASSWORD}'
-                      echo "Push Docker Image to Nexus : In Progress"
-                      sh 'docker tag yatra-ms 52.66.77.53:8085/yatra-ms:latest'
-                      sh 'docker push 52.66.77.53:8085/yatra-ms'
-                      echo "Push Docker Image to Nexus : Completed"
-                      }
-                   }
-                 }
-             }
-
-             stage('Deploy App to K8s Cluster') {
-                 steps {
-                     sh 'whoami'
-                     sh 'kubectl apply -f Kubernetes/prod'
-                 }
-
-             }/**
-             stage('Deploy App to K8s Cluster') {
-               withKubeConfig([credentialsId: 'kuberneteskubeconfig', serverUrl: 'https://api.myprodcluster.in']) {
-                     sh 'kubectl apply -f kubernetes/prod'
-                 }
-             }**/
-         }
-
-}
+                           withCredentials([string(credentialsId: 'DockerC', variable: 'DockerC)])
+                           sh 'docker login docker.io -u satyam88 -p ${dockerhubCred}'
+                           echo "Push Docker Image to DockerHub : In Progress"
+                           sh 'docker push akshay2patil/yatra2we:latest'
+                           echo "Push Docker Image to DockerHub : In Progress"
+                           sh 'whoami'
