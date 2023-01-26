@@ -74,6 +74,6 @@ pipeline {
                           echo "Push Docker Image to DockerHub : In Progress"
                           sh 'whoami'
                           }
-                       }
-                     }
-                 }
+         }
+    }
+}
