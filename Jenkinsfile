@@ -108,8 +108,8 @@ pipeline {
                  sh 'docker login  -u admin -p ${PASSWORD} 3.85.243.228:8081'
                  echo "Push Docker Image to Nexus : In Progress"
                  echo "Push Docker Image to Nexus : In Progress"
-                 sh 'docker tag yatra2we 3.85.243.228.21:8085/yatra2we:latest'
-                 sh 'docker push 3.85.243.228.21:8085/yatra2we'
+                 sh 'docker tag yatra2we 3.85.243.228.21:8081/yatra2we:latest'
+                 sh 'docker push 3.85.243.228.21:8081/yatra2we'
                  echo "Push Docker Image to Nexus : Completed"
                  }
               }
