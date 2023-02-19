@@ -104,8 +104,7 @@ pipeline {
         stage('Upload the docker Image to Nexus') {
            steps {
               script {
-                withCredentials([usernamePassword(credentialsId: 'nexuscred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])
-                withCredentials([string(credentialsId: 'akshay2patil', variable: 'akshay')]) {
+                withCredentials([usernamePassword(credentialsId: 'nexuscred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                  sh 'docker login http:// 34.204.18.96:8085/repository/yatra-ms/ -u admin -p ${PASSWORD}'
                  echo "Push Docker Image to Nexus : In Progress"
                  echo "Push Docker Image to Nexus : In Progress"
