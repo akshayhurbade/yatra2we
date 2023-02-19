@@ -105,11 +105,11 @@ pipeline {
            steps {
               script {
                 withCredentials([usernamePassword(credentialsId: 'nexuscred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                 sh 'docker login http://3.85.243.228.21:8085/repository/yatra-ms/ -u admin -p ${PASSWORD}'
+                 sh 'docker login http:// 34.204.18.96:8085/repository/yatra-ms/ -u admin -p ${PASSWORD}'
                  echo "Push Docker Image to Nexus : In Progress"
                  echo "Push Docker Image to Nexus : In Progress"
-                 sh 'docker tag yatra-2 3.85.243.228.21:8081/yatra-2:latest'
-                 sh 'docker push 3.85.243.228.21:8081/yatra-2'
+                 sh 'docker tag yatra-2 34.204.18.96:8085/yatra-2:latest'
+                 sh 'docker push 34.204.18.96:8085/yatra-2'
                  echo "Push Docker Image to Nexus : Completed"
                  }
               }
